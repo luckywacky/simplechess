@@ -1,0 +1,13 @@
+@use '../../styles/variables.scss' as v;
+
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;
+  padding: 1em 2em;
+  letter-spacing: 0.05rem;
+  background: v.$orange;
+  border-radius: 0.3em;
+  color: white;
+}

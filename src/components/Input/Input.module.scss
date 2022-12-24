@@ -1,0 +1,15 @@
+@use '../../styles/variables.scss' as v;
+
+.input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid v.$light-blue;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid v.$orange;
+  }
+  padding: 0.5em;
+  margin: 1em 0;
+}

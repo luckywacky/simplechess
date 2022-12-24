@@ -1,0 +1,11 @@
+@use './variables.scss' as v;
+
+html {
+  background: v.$dark-blue;
+  font: 700 1.2rem 'Roboto Slab', sans-serif;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}

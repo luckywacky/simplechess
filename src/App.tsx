@@ -1,11 +1,14 @@
-import * as React from 'react'
-import { Chessboard } from 'react-chessboard'
-import { useGameEngine } from './hooks/useGameEngine'
+import { Routes, Route } from 'react-router-dom'
+import { Welcome, Lobby } from './pages'
+import './styles/global.module.scss'
 
 function App() {
-	const gameEngine = useGameEngine()
-
-	return <Chessboard {...gameEngine} />
+  return (
+    <Routes>
+      <Route path="/" element={<Welcome />} />
+      <Route path="game/:id" element={<Lobby />} />
+    </Routes>
+  )
 }
 
 export default App

@@ -1,0 +1,15 @@
+@use '../../styles/variables.scss' as v;
+
+h1 {
+  font-size: 1.5em;
+  color: v.$dark-blue;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 1em;
+  gap: 1em;
+  button {
+    width: 12em;
+  }
+}
