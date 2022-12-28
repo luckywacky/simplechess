@@ -1,33 +1,23 @@
-import * as React from 'react'
+import { useState, useEffect } from 'react'
 import { Chess } from 'chess.js'
-import { Square } from '../types/gameEngine'
+import { ChessMove, Square } from '../types/gameEngine'
 import { gameMove, joinGame } from '../services/GameService'
-
-export interface ChessMove {
-  color: string
-  flags: string
-  from: string
-  piece: string
-  san: string
-  to: string
-}
+import { useBoardWidth } from './useBoardWidth'
 
 export function useGameEngine(gamename: string) {
-  const [game, setGame] = React.useState(new Chess())
-  const [conntected, setConnected] = React.useState(false)
+  const [game, setGame] = useState(new Chess())
+  const [conntected, setConnected] = useState(false)
+  const { boardWidth } = useBoardWidth()
 
-  React.useEffect(() => {
-    if (conntected) {
-      return
-    }
+  useEffect(() => {
+    if (conntected) return
+
     joinGame(gamename, (newMove: ChessMove) => {
       game.move(newMove)
       setGame({ ...game, ...newMove })
     })
     setConnected(true)
   }, [])
-
-  React.useEffect(() => {}, [])
 
   function onPieceDrop(sourceSquare: Square, targetSquare: Square) {
     const move = game.move({
@@ -41,7 +31,7 @@ export function useGameEngine(gamename: string) {
   }
 
   return {
-    boardWidth: window.innerWidth > 450 ? 560 : 400,
+    boardWidth,
     onPieceDrop,
     position: game.fen(),
   }

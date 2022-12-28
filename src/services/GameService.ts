@@ -1,6 +1,6 @@
 import './FirebaseService'
 import { getDatabase, ref, set, get, onValue, child } from 'firebase/database'
-import { ChessMove } from '../hooks/useGameEngine'
+import { ChessMove } from '../types/gameEngine'
 
 export async function checkGame(gamename: string): Promise<boolean> {
   const dbRef = ref(getDatabase())
